@@ -24,12 +24,13 @@ public class GivePlanAction extends Action{
 				actor.addItemToInventory(Item.newInventoryItem("Rocket Body", 'B'));
 			}
 		}
-		return subject + " gave the plan to " + actor + " and disappear with a cherry wave.";
+		map.removeActor(subject);
+		return subject + " gave rocket body to " + actor + " and disappear with a cherry wave.";
 	}
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " gets rocket plan from " + subject;
+		return actor + " gives rocket plan to " + subject;
 	}
 
 	@Override

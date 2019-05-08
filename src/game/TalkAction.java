@@ -17,11 +17,11 @@ public class TalkAction extends Action{
 		
 		for (Item item : items) {
 			if (item.toString().equals("Rocket Plan")) {
-				return "Hand them over, I don't have all day!";
+				return subject + ": Hand them over, I don't have all day!";
 			}
 		}
 		
-		return "I can give you something that will help, but I'm going to need the plans.";
+		return subject + ": I can give you something that will help, but I'm going to need the plans.";
 	}
 
 	@Override

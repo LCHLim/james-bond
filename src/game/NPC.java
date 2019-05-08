@@ -7,8 +7,8 @@ import edu.monash.fit2099.engine.*;
 
 public abstract class NPC extends Actor{
 
-	public NPC(String name) {
-		super(name, 'Q', 5, 50);
+	public NPC(String name, char displayChar) {
+		super(name, displayChar, 5, 50);
 	}
 	
 	protected List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();
