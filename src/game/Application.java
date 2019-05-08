@@ -15,15 +15,15 @@ public class Application {
 	public static void main(String[] args) {
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new Door());
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
 				".......................",
 				"....#####....######....",
 				"....#...#....#....#....",
-				"....#........#....#....",
-				"....#####....##.###....",
+				"....#...$....#....#....",
+				"....#####....##$###....",
 				".......................",
 				".......................",
 				".......................",
