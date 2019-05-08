@@ -44,7 +44,7 @@ public class Application {
 		gameMap.addActor(goon, 2, 3);
 		
 		Miniboss DoctorMaybe = new Miniboss("Docter Maybe");
-		gameMap.addActor(DoctorMaybe, 2, 3);
+		gameMap.addActor(DoctorMaybe, 2, 10);
 			
 		world.run();
 	}
