@@ -37,7 +37,7 @@ public class Application {
 		Actor player = new Player("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
 		
-		gameMap.at(2, 3).addItem(new Item("Rocket Plan", 'P'));
+//		gameMap.at(2, 4).addItem(new Item("Key", 'K'));
 		
 //		Grunt grunt = new Grunt("Mongo", player);
 //		gameMap.addActor(grunt, 0, 0);
@@ -45,10 +45,12 @@ public class Application {
 //		gameMap.addActor(grunt2,  10, 10);
 //		Goon goon = new Goon("MaBoi", player);
 //		gameMap.addActor(goon, 10, 3);
-		Q q = new Q("Q");
-		gameMap.addActor(q, 2, 8);
-		Miniboss DoctorMaybe = new Miniboss("Docter Maybe");
-		gameMap.addActor(DoctorMaybe, 2, 10);
+		
+//		gameMap.at(2, 3).addItem(new Item("Rocket Plan", 'P'));
+//		Q q = new Q("Q");
+//		gameMap.addActor(q, 2, 8);
+//		Miniboss DoctorMaybe = new Miniboss("Docter Maybe");
+//		gameMap.addActor(DoctorMaybe, 2, 10);
 			
 		world.run();
 	}

@@ -7,11 +7,11 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 
-public class GivePlanAction extends Action{
-	Actor subject;
+public class UnlockDoorAction extends Action{
+	Door door;
 	
-	public GivePlanAction(Actor subject) {
-		this.subject = subject;
+	public UnlockDoorAction(Door door) {
+		this.door = door;
 	}
 
 	@Override
@@ -19,11 +19,10 @@ public class GivePlanAction extends Action{
 		List<Item> items = actor.getInventory();
 		
 		for (Item item : items) {
-			if (item.toString().equals("Rocket Plan")) {
+			if (item.toString().equals("Key")) {
 				actor.removeItemFromInventory(item);
-				actor.addItemToInventory(Item.newInventoryItem("Rocket Body", 'B'));
-				map.removeActor(subject);
-				return subject + " gave rocket body to " + actor + " and disappear with a cherry wave.";
+				door.setIsPassable(true);
+				return actor + " has succesfully unlocked the door !";
 			}
 		}
 		return "";
@@ -31,7 +30,7 @@ public class GivePlanAction extends Action{
 
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " gives rocket plan to " + subject;
+		return actor + " unlocks the door.";
 	}
 
 	@Override
