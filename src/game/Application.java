@@ -37,6 +37,9 @@ public class Application {
 		Actor player = new Player("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
 		
+		Ninja ninja = new Ninja("Naruto", player);
+		gameMap.addActor(ninja, 5, 10);
+		
 //		gameMap.at(2, 4).addItem(new Item("Key", 'K'));
 		
 //		Grunt grunt = new Grunt("Mongo", player);

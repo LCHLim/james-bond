@@ -13,12 +13,33 @@ public class MoveAwayBehaviour implements ActionFactory{
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		Location here = map.locationOf(actor);
-		int xStart = (here.x() -5 < 0) ? 0 : here.x() - 5;
-		int xEnd = here.x() + 5;
-		int yStart = (here.y() - 5 < 0) ? 0 : here.y() - 5;
-		int yEnd = here.y() + 5;
+		Location there = map.locationOf(target);
 		
+		int currentDistance = distance(here, there);
+		if (currentDistance < 5) {
+			
+			Exit maxDistanceExit = here.getExits().get(0);
+			int maxDistance = 0;
+			for (Exit exit : here.getExits()) {
+				Location destination = exit.getDestination();
+				
+				if (destination.canActorEnter(actor)) {
+					int newDistance = distance(destination, there);
+					
+					if (newDistance > maxDistance) {
+						maxDistance = newDistance;
+						maxDistanceExit = exit;
+					}
+				}
+			}
+			return new MoveActorAction(maxDistanceExit.getDestination(), maxDistanceExit.getName());
+		}
 		return null;
+	}
+	
+	// Manhattan distance.
+	private int distance(Location a, Location b) {
+		return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
 	}
 
 }
