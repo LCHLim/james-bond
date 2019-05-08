@@ -8,6 +8,7 @@ public class Q extends NPC{
 
 	public Q(String name) {
 		super(name, 'Q');
+		addBehaviour(new WanderBehaviour());
 	}
 
 	@Override

@@ -1,7 +1,9 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import edu.monash.fit2099.engine.*;
 
@@ -17,9 +19,16 @@ public class WanderBehaviour implements ActionFactory{
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		Location here = map.locationOf(actor);
-		List<Exit> exits = here.getExits();
+		ArrayList<Exit> movableExits = new ArrayList<Exit>(); 
 		
-		Exit randExit = exits.get(rand.nextInt(exits.size()));
+		for (Exit exit : here.getExits()) {
+			Location destination = exit.getDestination();
+			if (destination.canActorEnter(actor)) {
+				movableExits.add(exit);
+			}
+		}
+		
+		Exit randExit = movableExits.get(rand.nextInt(movableExits.size()));
 		return new MoveActorAction(randExit.getDestination(), randExit.getName());
 	}
 
