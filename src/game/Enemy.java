@@ -6,11 +6,16 @@ import java.util.List;
 import edu.monash.fit2099.engine.*;
 
 public abstract class Enemy extends Actor{
-
+	protected static final int BASE_HITPOINTS = 50;
+	
 	public Enemy(String name, char displayChar) {
 		// this is enemies base priority and hitpoints
 		// can be used as a reference for other type of enemy
-		super(name, displayChar, 5, 50);
+		super(name, displayChar, 5, BASE_HITPOINTS);
+	}
+	
+	public Enemy(String name, char displayChar, int hitPoints) {
+		super(name, displayChar, 5, hitPoints);
 	}
 	
 	protected List<ActionFactory> actionFactories = new ArrayList<ActionFactory>();

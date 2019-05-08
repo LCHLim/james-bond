@@ -42,6 +42,9 @@ public class Application {
 		gameMap.addActor(grunt2,  10, 10);
 		Goon goon = new Goon("MaBoi", player);
 		gameMap.addActor(goon, 2, 3);
+		
+		Miniboss DoctorMaybe = new Miniboss("Docter Maybe");
+		gameMap.addActor(DoctorMaybe, 2, 3);
 			
 		world.run();
 	}
