@@ -8,7 +8,8 @@ import edu.monash.fit2099.engine.SkipTurnAction;
 
 public class StunnablePlayer extends Player{
 
-	boolean isStunned = false;
+	private boolean isStunned = false;
+	int stunCounter = 0;
 	
 	public StunnablePlayer(String name, char displayChar, int priority, int hitPoints) {
 		super(name, displayChar, priority, hitPoints);
@@ -18,9 +19,19 @@ public class StunnablePlayer extends Player{
 		isStunned = b;
 	}
 	
+	public boolean getIsStunned() {
+		return isStunned;
+	}
+	
 	@Override
 	protected Action showMenu(Actions actions, Display display) {
+		if (isStunned && stunCounter >= 2) {
+			stunCounter = 0;
+			isStunned = false;
+		}
+		
 		if (isStunned) {
+			stunCounter++;
 			return new SkipTurnAction();
 		}
 		
