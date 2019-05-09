@@ -56,7 +56,7 @@ public class UnlockDoorAction extends Action{
 	}
 
 	/**
-	 * Overriden method from the parent class to return the key used in the menu
+	 * Overridden method from the parent class to return the key used in the menu
 	 * for triggering the action unlocking a door.
 	 */
 	@Override
