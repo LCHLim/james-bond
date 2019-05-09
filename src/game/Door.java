@@ -41,7 +41,7 @@ public class Door extends Ground{
 	 * 
 	 * @param actor the Actor acting
 	 * @param location the current Location
-	 * @param direction the direction of the Ground from the Actor
+	 * @param direction the direction of the Door from the Actor
 	 */
 	@Override
 	public Actions allowableActions(Actor actor, Location location, String direction) {
