@@ -16,7 +16,7 @@ public class Wall extends Ground {
 	}
 	
 	/**
-	 * Overridden the method the from parent class to implement Wall to be impassable terrain.
+	 * Overridden method from the parent class to implement Wall to be impassable terrain.
 	 */
 	@Override
 	public boolean canActorEnter(Actor actor) {
@@ -24,7 +24,7 @@ public class Wall extends Ground {
 	}
 	
 	/**
-	 * Overridden the method from the parent class to implement Wall to be terrain that blocks thrown objects.
+	 * Overridden method from the parent class to implement Wall to be terrain that blocks thrown objects.
 	 */
 	@Override
 	public boolean blocksThrownObjects() {
