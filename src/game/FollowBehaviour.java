@@ -2,15 +2,26 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-
+/**
+ * Class representing follow behaviour of actors.
+ */
 public class FollowBehaviour implements ActionFactory {
 
 	private Actor target;
 
+	/**
+	 * Constructor for the FollowBehaviour class, which is implemented from the
+	 * ActionFactory interface.
+	 * 
+	 * @param subject actor on whom the follow behaviour is shown
+	 */
 	public FollowBehaviour(Actor subject) {
 		this.target = subject;
 	}
 
+	/**
+	 * Overridden method from the interface ActionFactory.
+	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		Location here = map.locationOf(actor);
@@ -29,6 +40,13 @@ public class FollowBehaviour implements ActionFactory {
 		return null;
 	}
 
+	/**
+	 * Calculates the Manhattan distance between two locations.
+	 * 
+	 * @param a first of the two locations between which the Manhattan distance is calculated
+	 * @param b second of the two locations between which the Manhattan distance is calculated
+	 * @return the calculated Manhattan distance
+	 */
 	// Manhattan distance.
 	private int distance(Location a, Location b) {
 		return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
