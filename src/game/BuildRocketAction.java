@@ -19,20 +19,28 @@ public class BuildRocketAction extends Action{
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		List<Item> items = here.getItems();
+		String[] itemRequired = {"Rocket Engine", "Rocket Body"};
 		ArrayList<Item> toBeRemovedItems = new ArrayList<Item> ();
 		
 		for (Item item : items) {
 			String itemName = item.toString();
-			if (itemName.equals("Rocket Engine") || itemName.equals("Rocket Body")) {
+			if (itemName.equals(itemRequired[0]) || itemName.equals(itemRequired[1])) {
 				toBeRemovedItems.add(item);
 			}
 		}
 		
-		for (Item item : toBeRemovedItems) {
-			here.removeItem(item);
+		if (toBeRemovedItems.size() < itemRequired.length) {
+			return "Rocket build failed." + System.lineSeparator() +
+					"Required both " + itemRequired[0] + " and " + itemRequired[1] +
+					" on the Rocket Pad.";
+		} else {
+			for (Item item : toBeRemovedItems) {
+				here.removeItem(item);
+			}
+			Item rocket = Item.newFurniture("Rocket", '^');
+			map.addItem(rocket, here.x(), here.y());
+			return actor + " has successfully built the rocket !";
 		}
-		
-		return actor + " has successfully built the rocket !";
 	}
 
 	@Override

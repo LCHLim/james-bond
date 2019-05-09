@@ -26,7 +26,7 @@ public class GivePlanAction extends Action{
 				return subject + " gave rocket body to " + actor + " and disappear with a cherry wave.";
 			}
 		}
-		return "";
+		return subject+ ": You do not have a rocket plan !";
 	}
 
 	@Override
