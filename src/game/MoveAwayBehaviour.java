@@ -15,9 +15,17 @@ public class MoveAwayBehaviour implements ActionFactory{
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
 		
-		int currentDistance = distance(here, there);
-		if (currentDistance < 5) {
+		Range xs, ys;
+		if (distance(here, there) < 5) {
+			xs = new Range(Math.min(here.x(), there.x()), Math.abs(here.x() - there.x()) + 1);
+			ys = new Range(Math.min(here.y(), there.y()), Math.abs(here.y() - there.y()) + 1);
 			
+			for (int x : xs) {
+				for (int y : ys) {
+					if(map.at(x, y).getGround().blocksThrownObjects())
+						return null;
+				}
+			}
 			Exit maxDistanceExit = here.getExits().get(0);
 			int maxDistance = 0;
 			for (Exit exit : here.getExits()) {

@@ -1,7 +1,5 @@
 package game;
 
-import java.util.List;
-
 import edu.monash.fit2099.engine.*;
 
 public class Q extends NPC{
