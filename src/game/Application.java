@@ -37,10 +37,11 @@ public class Application {
 		Actor player = new StunnablePlayer("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
 		
+		Item key = new Item("Key", 'K');
+		gameMap.addItem(key, 2, 3);
 //		Ninja ninja = new Ninja("Naruto", player);
 //		gameMap.addActor(ninja, 5, 10);
 		
-		gameMap.at(2, 4).addItem(new Item("Key", 'K'));
 		
 //		Grunt grunt = new Grunt("Mongo", player);
 //		gameMap.addActor(grunt, 0, 0);
@@ -52,8 +53,11 @@ public class Application {
 //		gameMap.at(2, 3).addItem(new Item("Rocket Plan", 'P'));
 //		Q q = new Q("Q");
 //		gameMap.addActor(q, 2, 8);
-//		Miniboss DoctorMaybe = new Miniboss("Docter Maybe");
-//		gameMap.addActor(DoctorMaybe, 2, 10);
+		
+		
+//		Miniboss doctorMaybe = new Miniboss("Docter Maybe");
+//		doctorMaybe.addItemToInventory(Item.newInventoryItem("Rocket Engine", 'E'));
+//		gameMap.addActor(doctorMaybe, 15, 2);
 			
 		world.run();
 	}

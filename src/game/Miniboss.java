@@ -7,7 +7,6 @@ public class Miniboss extends Enemy{
 
 	public Miniboss(String name) {
 		super(name, 'M', Enemy.BASE_HITPOINTS / 2);
-		addItemToInventory(Item.newInventoryItem("Rocket Engine", 'E'));
 	}
 	
 	@Override
