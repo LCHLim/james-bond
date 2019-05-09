@@ -50,14 +50,16 @@ public class Application {
 //		Goon goon = new Goon("MaBoi", player);
 //		gameMap.addActor(goon, 10, 3);
 		
-//		gameMap.at(2, 3).addItem(new Item("Rocket Plan", 'P'));
-//		Q q = new Q("Q");
-//		gameMap.addActor(q, 2, 8);
+
+		Q q = new Q("Q");
+		gameMap.addActor(q, 17, 6);
 		
+		Item rocketPlan = new Item("Rocket Plan", 'P');
+		gameMap.addItem(rocketPlan, 6, 2);
 		
-//		Miniboss doctorMaybe = new Miniboss("Docter Maybe");
-//		doctorMaybe.addItemToInventory(Item.newInventoryItem("Rocket Engine", 'E'));
-//		gameMap.addActor(doctorMaybe, 15, 2);
+		Miniboss doctorMaybe = new Miniboss("Docter Maybe");
+		doctorMaybe.addItemToInventory(Item.newInventoryItem("Rocket Engine", 'E'));
+		gameMap.addActor(doctorMaybe, 15, 2);
 			
 		world.run();
 	}

@@ -17,14 +17,7 @@ public class Q extends NPC{
 		
 		if (otherActor instanceof Player) {
 			actions.add(new TalkAction(this));
-			
-			List<Item> items = otherActor.getInventory();
-			
-			for (Item item : items) {
-				if (item.toString().equals("Rocket Plan")) {
-					actions.add(new GivePlanAction(this));
-				}
-			}
+			actions.add(new GivePlanAction(this));
 		}
 		return actions;
 	}
