@@ -14,7 +14,7 @@ public class Miniboss extends Enemy{
 	 * @param name name of the Miniboss
 	 */
 	public Miniboss(String name) {
-		super(name, 'm', Enemy.BASE_HITPOINTS / 2);
+		super(name, 'M', Enemy.BASE_HITPOINTS / 2);
 	}
 	
 	/**

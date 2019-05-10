@@ -28,32 +28,39 @@ public class Application {
 				".......................",
 				".......................",
 				".......................",
+				"...........R...........",
 				".......................",
-				"..................o....",
 				".......................");
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
 		
 		Actor player = new StunnablePlayer("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
-	
+		
+		Item key = new Item("Key", 'K');
+		gameMap.addItem(key, 6, 3);
+
+		
+		
 		Grunt grunt = new Grunt("Mongo", player);
 		gameMap.addActor(grunt, 0, 0);
 
 		Goon goon = new Goon("Norbert", player);
 		gameMap.addActor(goon, 10, 3);
 		
+
 		Ninja ninja = new Ninja("Naruto", player);
-		gameMap.addActor(ninja, 10, 7);
+		gameMap.addActor(ninja,9 , 3);
+		
 		
 		Q q = new Q("Q");
 		gameMap.addActor(q, 17, 6);
 		
-		Item rocketPlan = new Item("Rocket Plan", 'x');
+		Item rocketPlan = new Item("Rocket Plan", 'P');
 		gameMap.addItem(rocketPlan, 6, 2);
 		
 		Miniboss doctorMaybe = new Miniboss("Docter Maybe");
-		doctorMaybe.addItemToInventory(Item.newInventoryItem("Rocket Engine", '*'));
+		doctorMaybe.addItemToInventory(Item.newInventoryItem("Rocket Engine", 'E'));
 		gameMap.addActor(doctorMaybe, 15, 2);
 			
 		world.run();

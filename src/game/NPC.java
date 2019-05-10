@@ -36,6 +36,8 @@ public abstract class NPC extends Actor{
 	}
 	
 	@Override
-	public abstract Actions getAllowableActions(Actor otherActor, String direction, GameMap map);
+	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+		return new Actions();
+	}
 
 }

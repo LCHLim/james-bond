@@ -33,7 +33,7 @@ public class GivePlanAction extends Action{
 		for (Item item : items) {
 			if (item.toString().equals("Rocket Plan")) {
 				actor.removeItemFromInventory(item);
-				actor.addItemToInventory(Item.newInventoryItem("Rocket Body", '['));
+				actor.addItemToInventory(Item.newInventoryItem("Rocket Body", 'B'));
 				map.removeActor(subject);
 				return subject + " gave rocket body to " + actor + " and disappeared with a cherry wave.";
 			}
