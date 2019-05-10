@@ -2,14 +2,26 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ * Class representing move away behaviour of actors.
+ */
 public class MoveAwayBehaviour implements ActionFactory{
 	
 	private Actor target;
 	
+	/**
+	 * Constructor for the MoveAwayBehaviour class, which is implemented from the
+	 * ActionFactory interface.
+	 * 
+	 * @param subject actor from whom the move away behaviour is shown
+	 */
 	public MoveAwayBehaviour(Actor subject) {
 		this.target = subject;
 	}
-
+	
+	/**
+	 * Overridden method from the interface ActionFactory.
+	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		Location here = map.locationOf(actor);
@@ -48,6 +60,13 @@ public class MoveAwayBehaviour implements ActionFactory{
 		return null;
 	}
 	
+	/**
+	 * Calculates the Manhattan distance between two locations.
+	 * 
+	 * @param a first of the two locations between which the Manhattan distance is calculated
+	 * @param b second of the two locations between which the Manhattan distance is calculated
+	 * @return the calculated Manhattan distance
+	 */
 	// Manhattan distance.
 	private int distance(Location a, Location b) {
 		return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
