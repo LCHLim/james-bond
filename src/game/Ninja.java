@@ -16,7 +16,10 @@ public class Ninja extends Enemy{
 	
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
+		
+		// ninja will either throw powder or move away from player each turn
 		ActionFactory behaviour = actionFactories.get(rand.nextInt(actionFactories.size()));
+	
 		Action action = behaviour.getAction(this, map);
 		if (action != null) {
 			return action;

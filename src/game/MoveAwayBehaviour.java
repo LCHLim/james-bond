@@ -15,6 +15,7 @@ public class MoveAwayBehaviour implements ActionFactory{
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
 		
+		// this condition check whether if ninja could "see" player within 5 squares of them
 		Range xs, ys;
 		if (distance(here, there) < 5) {
 			xs = new Range(Math.min(here.x(), there.x()), Math.abs(here.x() - there.x()) + 1);
@@ -26,6 +27,8 @@ public class MoveAwayBehaviour implements ActionFactory{
 						return null;
 				}
 			}
+			
+			// java will run this code if they could see the player
 			Exit maxDistanceExit = here.getExits().get(0);
 			int maxDistance = 0;
 			for (Exit exit : here.getExits()) {
