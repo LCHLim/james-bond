@@ -29,7 +29,7 @@ public class InsultAction extends Action{
 	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
-		return actor + " says " + insults[rand.nextInt(insults.length)];
+		return actor + " throw an insult: " + insults[rand.nextInt(insults.length)];
 	}
 	
 	/**

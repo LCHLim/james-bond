@@ -29,6 +29,11 @@ public class Goon extends Enemy{
 	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
+		// 10 % of chance to invoke an insult
+		if (rand.nextInt(10) == 0) {
+			return new InsultAction(this);
+		}
+		
 		// enemy will do its behaviours before action
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);
@@ -36,10 +41,6 @@ public class Goon extends Enemy{
 				return action;
 		}
 		
-		// 10 % of chance to invoke an insult
-		if (rand.nextInt(10) == 0) {
-			return new InsultAction(this);
-		}
 		
 		// if no behaviour are done, either attack or skip turn
 		for (Action action : actions) {

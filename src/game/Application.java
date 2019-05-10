@@ -35,7 +35,7 @@ public class Application {
 		world.addMap(gameMap);
 		
 		Actor player = new StunnablePlayer("Player", '@', 1, 100);
-		world.addPlayer(player, gameMap, 3, 5);
+		world.addPlayer(player, gameMap, 2, 2);
 		
 		Item key = new Item("Key", 'K');
 		gameMap.addItem(key, 6, 3);
@@ -46,13 +46,13 @@ public class Application {
 //		gameMap.addActor(grunt, 0, 0);
 //		Grunt grunt2 = new Grunt("Norbert", player);
 //		gameMap.addActor(grunt2,  10, 10);
-//		Goon goon = new Goon("MaBoi", player);
-//		gameMap.addActor(goon, 10, 3);
+		Goon goon = new Goon("MaBoi", player);
+		gameMap.addActor(goon, 10, 3);
 		
 
 // ------------------------------------------------		
-		Ninja ninja = new Ninja("Naruto", player);
-		gameMap.addActor(ninja,9 , 3);
+//		Ninja ninja = new Ninja("Naruto", player);
+//		gameMap.addActor(ninja,9 , 3);
 		
 		
 //		Q q = new Q("Q");
