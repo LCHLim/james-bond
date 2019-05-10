@@ -24,39 +24,41 @@ public class MoveAwayBehaviour implements ActionFactory{
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		Location here = map.locationOf(actor);
-		Location there = map.locationOf(target);
-		
-		// this condition check whether if ninja could "see" player within 5 squares of them
-		Range xs, ys;
-		if (distance(here, there) < 5) {
-			xs = new Range(Math.min(here.x(), there.x()), Math.abs(here.x() - there.x()) + 1);
-			ys = new Range(Math.min(here.y(), there.y()), Math.abs(here.y() - there.y()) + 1);
+		try {
+			Location here = map.locationOf(actor);
+			Location there = map.locationOf(target);
 			
-			for (int x : xs) {
-				for (int y : ys) {
-					if(map.at(x, y).getGround().blocksThrownObjects())
-						return null;
-				}
-			}
-			
-			// java will run this code if they could see the player
-			Exit maxDistanceExit = here.getExits().get(0);
-			int maxDistance = 0;
-			for (Exit exit : here.getExits()) {
-				Location destination = exit.getDestination();
+			// this condition check whether if ninja could "see" player within 5 squares of them
+			Range xs, ys;
+			if (distance(here, there) < 5) {
+				xs = new Range(Math.min(here.x(), there.x()), Math.abs(here.x() - there.x()) + 1);
+				ys = new Range(Math.min(here.y(), there.y()), Math.abs(here.y() - there.y()) + 1);
 				
-				if (destination.canActorEnter(actor)) {
-					int newDistance = distance(destination, there);
-					
-					if (newDistance > maxDistance) {
-						maxDistance = newDistance;
-						maxDistanceExit = exit;
+				for (int x : xs) {
+					for (int y : ys) {
+						if(map.at(x, y).getGround().blocksThrownObjects())
+							return null;
 					}
 				}
-			}
+				
+				// java will run this code if they could see the player
+				Exit maxDistanceExit = here.getExits().get(0);
+				int maxDistance = 0;
+				for (Exit exit : here.getExits()) {
+					Location destination = exit.getDestination();
+					
+					if (destination.canActorEnter(actor)) {
+						int newDistance = distance(destination, there);
+						
+						if (newDistance > maxDistance) {
+							maxDistance = newDistance;
+							maxDistanceExit = exit;
+						}
+					}
+				}
 			return new MoveActorAction(maxDistanceExit.getDestination(), maxDistanceExit.getName());
-		}
+			}
+		} catch (Exception ex) {}
 		return null;
 	}
 	

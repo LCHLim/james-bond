@@ -17,7 +17,7 @@ public abstract class NPC extends Actor{
 	 * @param displayChar character to display for this type of non-player character
 	 */
 	public NPC(String name, char displayChar) {
-		super(name, displayChar, 1, 50);
+		super(name, displayChar, 5, 50);
 	}
 	
 	/**
@@ -60,8 +60,6 @@ public abstract class NPC extends Actor{
 	 * Overridden method from parent class to disable NPC from being attacked.
 	 */
 	@Override
-	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
-		return new Actions();
-	}
+	public abstract Actions getAllowableActions(Actor otherActor, String direction, GameMap map);
 
 }

@@ -21,7 +21,7 @@ public abstract class Enemy extends Actor{
 		// this is enemies base priority and hitpoints
 		// can be used as a reference for other type of enemy
 		super(name, displayChar, 5, BASE_HITPOINTS);
-		addItemToInventory(Item.newInventoryItem("Key", '*'));
+		addItemToInventory(Item.newInventoryItem("Key", '/'));
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public abstract class Enemy extends Actor{
 	 */
 	public Enemy(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, 5, hitPoints);
-		addItemToInventory(Item.newInventoryItem("Key", '*'));
+		addItemToInventory(Item.newInventoryItem("Key", '/'));
 	}
 	
 	/**

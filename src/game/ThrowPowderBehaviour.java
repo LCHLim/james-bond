@@ -27,22 +27,24 @@ public class ThrowPowderBehaviour extends Action implements ActionFactory{
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		Location here = map.locationOf(actor);
-		Location there = map.locationOf(target);
-					
-		Range xs, ys;
-		if (distance(here,there) < 5) {
-			xs = new Range(Math.min(here.x(), there.x()), Math.abs(here.x() - there.x()) + 1);
-			ys = new Range(Math.min(here.y(), there.y()), Math.abs(here.y() - there.y()) + 1);
-			
-			for (int x : xs) {
-				for (int y : ys) {
-					if(map.at(x, y).getGround().blocksThrownObjects())
-						return null;
+		try {
+			Location here = map.locationOf(actor);
+			Location there = map.locationOf(target);
+						
+			Range xs, ys;
+			if (distance(here,there) < 5) {
+				xs = new Range(Math.min(here.x(), there.x()), Math.abs(here.x() - there.x()) + 1);
+				ys = new Range(Math.min(here.y(), there.y()), Math.abs(here.y() - there.y()) + 1);
+				
+				for (int x : xs) {
+					for (int y : ys) {
+						if(map.at(x, y).getGround().blocksThrownObjects())
+							return null;
+					}
 				}
+				return this;
 			}
-			return this;
-		}
+		} catch (Exception ex) {}
 		return null;
 	}
 

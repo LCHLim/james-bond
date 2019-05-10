@@ -24,21 +24,27 @@ public class FollowBehaviour implements ActionFactory {
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		Location here = map.locationOf(actor);
-		Location there = map.locationOf(target);
+        try{
+            Location here = map.locationOf(actor);
+            Location there = map.locationOf(target);
 
-		int currentDistance = distance(here, there);
-		for (Exit exit : here.getExits()) {
-			Location destination = exit.getDestination();
-			if (destination.canActorEnter(actor)) {
-				int newDistance = distance(destination, there);
-				if (newDistance < currentDistance) {
-					return new MoveActorAction(destination, exit.getName());
-				}
-			}
-		}
-		return null;
-	}
+            int currentDistance = distance(here, there);
+            for (Exit exit : here.getExits()) {
+                Location destination = exit.getDestination();
+                if (destination.canActorEnter(actor)) {
+                    int newDistance = distance(destination, there);
+                    if (newDistance < currentDistance) {
+                        return new MoveActorAction(destination, exit.getName());
+                    }
+                }
+            }
+        }
+        catch(Exception ex)
+        {}
+
+        return null;
+    }
+
 
 	/**
 	 * Calculates the Manhattan distance between two locations.
