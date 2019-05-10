@@ -9,7 +9,7 @@ public class Ninja extends Enemy{
 	Random rand = new Random();
 	
 	public Ninja(String name, Actor player) {
-		super(name, 'N');
+		super(name, 'n');
 		addBehaviour(new MoveAwayBehaviour(player));
 		addBehaviour(new ThrowPowderBehaviour(player));
 	}

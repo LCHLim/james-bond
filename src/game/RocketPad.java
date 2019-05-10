@@ -11,7 +11,7 @@ public class RocketPad extends Ground{
 	 * Super constructor of the RocketPad class extended from the Ground class.
 	 */
 	public RocketPad() {
-		super('R');
+		super('o');
 	}
 	
 	/**
