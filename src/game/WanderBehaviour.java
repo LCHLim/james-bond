@@ -15,14 +15,6 @@ public class WanderBehaviour implements ActionFactory{
 	Random rand = new Random();
 	
 	/**
-	 * Constructor for the FollowBehaviour class, which is implemented from the
-	 * ActionFactory interface.
-	 */
-	public WanderBehaviour() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
 	 * Overridden method from the interface ActionFactory.
 	 */
 	@Override

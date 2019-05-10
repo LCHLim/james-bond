@@ -34,7 +34,6 @@ public class Goon extends Enemy{
 			return new InsultAction(this);
 		}
 		
-		// enemy will do its behaviours before action
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);
 			if(action != null)
