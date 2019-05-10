@@ -38,6 +38,7 @@ public class BuildRocketAction extends Action{
 		String[] itemRequired = {"Rocket Engine", "Rocket Body"};
 		ArrayList<Item> toBeRemovedItems = new ArrayList<Item> ();
 		
+		// record the item that need to be removed
 		for (Item item : items) {
 			String itemName = item.toString();
 			if (itemName.equals(itemRequired[0]) || itemName.equals(itemRequired[1])) {
@@ -45,14 +46,18 @@ public class BuildRocketAction extends Action{
 			}
 		}
 		
+		// if item to be removed is less than item required, action failed.
 		if (toBeRemovedItems.size() < itemRequired.length) {
 			return "Rocket build failed." + System.lineSeparator() +
 					"Required both " + itemRequired[0] + " and " + itemRequired[1] +
 					" on the Rocket Pad.";
 		} else {
+			// remove item from location
 			for (Item item : toBeRemovedItems) {
 				here.removeItem(item);
 			}
+			
+			// create a rocket at the location
 			Item rocket = Item.newFurniture("Rocket", '^');
 			map.addItem(rocket, here.x(), here.y());
 			return actor + " has successfully built the rocket !";
