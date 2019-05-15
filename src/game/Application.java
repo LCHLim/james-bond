@@ -26,7 +26,7 @@ public class Application {
 		World world = new World(new Display());
 		
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new Door(), new RocketPad());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new Door(), new RocketPad(), new Crater());
 		GameMap gameMap;
 
 
