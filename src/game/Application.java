@@ -42,10 +42,23 @@ public class Application {
 				".......................",
 				".................._....",
 				".......................");
-		
-	
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
+		
+		List<String> moonMap = Arrays.asList(
+                "ooooooooooooooooo.....o",
+                "oooooooo...oooooooooooo",
+                "oooooooooo..ooooooooooo",
+                "oooooooooo...oooooooooo",
+                "ooooooo......oooooooooo",
+                "ooooooooo...ooooooooooo",
+                "oooooooooo......ooooooo",
+                "ooooo...ooooooooooooooo",
+                "ooooooooooooooooo.....o",
+                "oooo...ooooooooooo...oo",
+                "ooooooooooooooooooooooo");
+		GameMap moon = new GameMap(groundFactory, moonMap);
+		world.addMap(moon);
 		
 
 		Actor player = new StunnablePlayer("Player", '@', 1, 100);
