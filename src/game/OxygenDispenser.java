@@ -25,7 +25,13 @@ public class OxygenDispenser extends Item {
 	
 	@Override
 	public Actions getAllowableActions() {
-		return new Actions(new PressButtonAction(this));
+		Actions actions = new Actions(new PressButtonAction(this));
+		
+		if (buttonPressed) {
+			actions.add(new GetOxygenTankAction(this));
+		}
+
+		return actions;
 	}
 
 	

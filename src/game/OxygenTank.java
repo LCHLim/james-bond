@@ -10,14 +10,16 @@ public class OxygenTank extends Item {
 
 	}
 
+	public int getValue() {
+		return value;
+	}
+
 	public boolean decreaseValue() {
 		if (value > 0) {
 			value--;
 			return true;
-			
 		} else {
 			return false;
-			
 		}
 	}
 
