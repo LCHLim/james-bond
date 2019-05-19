@@ -1,5 +1,6 @@
 package game;
 
+import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Item;
 
 public class OxygenDispenser extends Item {
@@ -14,7 +15,18 @@ public class OxygenDispenser extends Item {
 		return buttonPressed;
 	}
 	
+	public void pressButton() {
+		buttonPressed = true;
+	}
 	
+	public void unpressButton() {
+		buttonPressed = false;
+	}
+	
+	@Override
+	public Actions getAllowableActions() {
+		return new Actions(new PressButtonAction(this));
+	}
 
 	
 

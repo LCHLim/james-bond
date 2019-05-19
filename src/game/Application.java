@@ -89,6 +89,9 @@ public class Application {
 		Item spaceSuit = new Item("space suit", '&');
         spaceSuit.addSkill(GameSkills.SPACETRAVELLER);
         gameMap.addItem(spaceSuit, 0, 1);
+        
+        Item oxygenDispenser = new OxygenDispenser();
+        gameMap.addItem(oxygenDispenser, 2, 10);
 		
 		
 		// base code
