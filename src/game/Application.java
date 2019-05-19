@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.MoveActorAction;
 import edu.monash.fit2099.engine.Player;
 import edu.monash.fit2099.engine.World;
 
@@ -25,10 +26,8 @@ public class Application {
 		
 		World world = new World(new Display());
 		
-
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new Door(), new RocketPad(), new Crater());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new Door(), new Crater());
 		GameMap gameMap;
-
 
 		List<String> map = Arrays.asList(
 				".......................",
@@ -40,7 +39,7 @@ public class Application {
 				".......................",
 				".......................",
 				".......................",
-				".................._....",
+				".......................",
 				".......................");
 		gameMap = new GameMap(groundFactory, map);
 		world.addMap(gameMap);
@@ -60,7 +59,15 @@ public class Application {
 		GameMap moon = new GameMap(groundFactory, moonMap);
 		world.addMap(moon);
 		
-
+		Item rocketToMoon = Item.newFurniture("Rocket", '^');
+		rocketToMoon.getAllowableActions().add(new MoveActorAction(moon.at(9, 4), "to Moon!"));
+		
+		RocketPad rocketPad = new RocketPad(rocketToMoon);
+		gameMap.add(rocketPad, gameMap.at(18, 9));
+		
+		
+		
+		 
 		Actor player = new StunnablePlayer("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
 		

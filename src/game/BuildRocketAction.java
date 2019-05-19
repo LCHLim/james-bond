@@ -13,15 +13,17 @@ import edu.monash.fit2099.engine.Location;
  * Class representing the rocket building action of the player.
  */
 public class BuildRocketAction extends Action{
-	Location here;
-	
+	private Location here;
+	private Item rocket;
+
 	/**
 	 * Constructor for the BuildRocketAction class, which in an extension of the Action class.
-	 * 
 	 * @param location location at which the rocket is to be built
+	 * @param rocket a rocket object
 	 */
-	public BuildRocketAction(Location location) {
+	public BuildRocketAction(Location location, Item rocket) {
 		here = location;
+		this.rocket = rocket;
 	}
 	
 	/**
@@ -57,8 +59,7 @@ public class BuildRocketAction extends Action{
 				here.removeItem(item);
 			}
 			
-			// create a rocket at the location
-			Item rocket = Item.newFurniture("Rocket", '^');
+			// put rocket at the location
 			map.addItem(rocket, here.x(), here.y());
 			return actor + " has successfully built the rocket !";
 		}
