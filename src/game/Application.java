@@ -3,6 +3,7 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.monash.fit2099.demo.DemoSkills;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
@@ -78,11 +79,19 @@ public class Application {
 		Actor player = new StunnablePlayer("Player", '@', 1, 100);
 		world.addPlayer(player, gameMap, 2, 2);
 		
-		
+		// testing code
 		Item rocketBody = new Item("Rocket Body", '[');
 		Item rocketEngine = new Item("Rocket Engine", '*');
 		gameMap.addItem(rocketEngine, 2, 3);
 		gameMap.addItem(rocketBody, 2, 4);
+		
+		
+		Item spaceSuit = new Item("space suit", '&');
+        spaceSuit.addSkill(GameSkills.SPACETRAVELLER);
+        gameMap.addItem(spaceSuit, 0, 1);
+		
+		
+		// base code
 		
 //		Grunt grunt = new Grunt("Mongo", player);
 //		gameMap.addActor(grunt, 0, 0);
