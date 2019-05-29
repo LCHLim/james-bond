@@ -1,8 +1,14 @@
 package game;
 
+import java.util.List;
+
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
+import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.Location;
+import edu.monash.fit2099.engine.MoveActorAction;
 import edu.monash.fit2099.engine.Player;
 import edu.monash.fit2099.engine.SkipTurnAction;
 
@@ -12,7 +18,9 @@ import edu.monash.fit2099.engine.SkipTurnAction;
 public class StunnablePlayer extends Player{
 
 	private boolean isStunned = false;
-	int stunCounter = 0;
+	private int stunCounter = 0;
+	private GameMap moon;
+	private Location earthRocketLocation;
 	
 	/**
 	 * Super constructor for StunnablePlayer class extended from the Player class.
@@ -22,10 +30,13 @@ public class StunnablePlayer extends Player{
 	 * @param priority how early in the turn the player can act
 	 * @param hitPoints player's starting number of hitpoints
 	 */
-	public StunnablePlayer(String name, char displayChar, int priority, int hitPoints) {
+	public StunnablePlayer(String name, char displayChar, int priority, int hitPoints, GameMap moon, Location earthRocketLocation) {
 		super(name, displayChar, priority, hitPoints);
+		this.moon = moon;
+		this.earthRocketLocation = earthRocketLocation;
 	}
-	
+
+
 	/**
 	 * Mutates the isStunned field of the Player class.
 	 * 
@@ -42,6 +53,52 @@ public class StunnablePlayer extends Player{
 	 */
 	public boolean getIsStunned() {
 		return isStunned;
+	}
+	
+	private int getRemainingOxygenCount() {
+		List<Item> items = getInventory();
+		
+		int amount = 0;
+		for (Item item : items) {
+			if (item instanceof OxygenTank) {
+				amount += ((OxygenTank) item).getValue();
+			}
+		}
+		
+		return amount;
+	}
+	
+	private void consumeOxygen() {
+		List<Item> items = getInventory();
+		
+		int i = 0;
+		while (!(items.get(i) instanceof OxygenTank)) {
+			i++;
+		}
+		
+		OxygenTank oxygenTank = (OxygenTank) items.get(i);
+		oxygenTank.decreaseValue();
+		
+		if (oxygenTank.isEmpty()) {
+			this.removeItemFromInventory(oxygenTank);
+		}
+		
+	}
+	
+	@Override
+	public Action playTurn(Actions actions, GameMap map, Display display) {
+		
+		
+		
+		if (map.equals(moon)) {
+			
+			if (getRemainingOxygenCount() > 0)
+				consumeOxygen();
+			else
+				return new MoveActorAction(earthRocketLocation, "to Earth!");
+		}
+		
+		return showMenu(actions, display);
 	}
 	
 	/**

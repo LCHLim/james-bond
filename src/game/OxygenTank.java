@@ -7,20 +7,20 @@ public class OxygenTank extends Item {
 	
 	public OxygenTank() {
 		super("Oxygen Tank", 'H');
-
 	}
 
 	public int getValue() {
 		return value;
 	}
 
-	public boolean decreaseValue() {
-		if (value > 0) {
+	public void decreaseValue() {
+		if (!isEmpty()) {
 			value--;
-			return true;
-		} else {
-			return false;
 		}
+	}
+	
+	public boolean isEmpty() {
+		return getValue() <= 0;
 	}
 
 

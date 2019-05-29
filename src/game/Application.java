@@ -75,8 +75,7 @@ public class Application {
 		
 		moon.addItem(rocketToEarth, moonRocketLocation.x(), moonRocketLocation.y());
 		
-	
-		Actor player = new StunnablePlayer("Player", '@', 1, 100);
+		Actor player = new StunnablePlayer("Player", '@', 1, 100, moon, earthRocketLocation);
 		world.addPlayer(player, gameMap, 2, 2);
 		
 		// testing code
