@@ -56,7 +56,7 @@ public class StunnablePlayer extends Player{
 		
 		if (isStunned) {
 			stunCounter++;
-			return new SkipTurnAction();
+			return super.showMenu(new Actions(new SkipTurnAction()), display);
 		}
 		
 		return super.showMenu(actions, display);
