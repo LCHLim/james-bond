@@ -87,7 +87,8 @@ public class StunnablePlayer extends Player{
 	
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
-		
+		display.println("HitPoints: " + hitPoints + "/" + maxHitPoints);
+		display.println("Oxygen: " + getRemainingOxygenCount() + " Units");
 		
 		
 		if (map.equals(moon)) {
@@ -95,7 +96,8 @@ public class StunnablePlayer extends Player{
 			if (getRemainingOxygenCount() > 0)
 				consumeOxygen();
 			else
-				return new MoveActorAction(earthRocketLocation, "to Earth!");
+				display.println("Do not have enough amount of oxygen :(");
+				return new MoveActorAction(earthRocketLocation, "to Earth automatically by the safety system!");
 		}
 		
 		return showMenu(actions, display);
