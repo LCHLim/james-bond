@@ -90,7 +90,8 @@ public class Application {
         spaceSuit.addSkill(GameSkills.SPACETRAVELLER);
         gameMap.addItem(spaceSuit, 0, 1);
         
-        Item oxygenDispenser = new OxygenDispenser();
+        Item oxygenDispenser = Item.newFurniture("Oxygen Dispenser", 'W');
+        oxygenDispenser.getAllowableActions().add(new PressButtonAction(oxygenDispenser));
         gameMap.addItem(oxygenDispenser, 2, 10);
 		
 		
