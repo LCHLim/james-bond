@@ -23,7 +23,8 @@ public class SquirtWaterAction extends Action {
 			
 			if (rand.nextDouble() < 0.7) {
 				target.removeItemFromInventory(exoskeleton);
-				return actor + " squirts water onto " + target;
+				return actor + " squirts water onto " + target +
+						"\n" + target + "'s exoskeleton destroyed :D";
 			} else {
 				return actor + " missed " + target;
 			}

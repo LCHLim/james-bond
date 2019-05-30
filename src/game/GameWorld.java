@@ -1,15 +1,14 @@
 package game;
 
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.Item;
-import edu.monash.fit2099.engine.World;
+import edu.monash.fit2099.engine.*;
+
 
 public class GameWorld extends World {
 
 	public GameWorld(Display display) {
 		super(display);
 	}
-		
+	
 	
 	@Override
 	protected String endGameMessage() {

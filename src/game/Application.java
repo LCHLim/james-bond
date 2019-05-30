@@ -109,7 +109,7 @@ public class Application {
 		// ----------------- Actor ------------------
 		
 		Grunt mongo = new Grunt("Mongo", player);
-		gameMap.addActor(mongo, 0, 0);
+		gameMap.addActor(mongo, 0, 5);
 
 		Goon norbert = new Goon("Norbert", player);
 		gameMap.addActor(norbert, 10, 3);
