@@ -1,5 +1,7 @@
 package game;
 
 public enum GameSkills {
-	SPACETRAVELLER;
+	SPACETRAVELLER,
+	WATERSHOOTER,
+	INVULNERABLE;
 }

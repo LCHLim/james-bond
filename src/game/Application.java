@@ -28,7 +28,14 @@ public class Application {
 		
 		World world = new World(new Display());
 		
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Floor(), new Wall(), new Door(), new Crater());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(
+				new Floor(),
+				new Wall(),
+				new Door(),
+				new Crater(),
+				new Water()
+				);
+		
 		GameMap gameMap;
 
 		List<String> map = Arrays.asList(
@@ -39,8 +46,8 @@ public class Application {
 				"....#####....##+###....",
 				".......................",
 				".......................",
-				".......................",
-				".......................",
+				".......~~..............",
+				".......~~..............",
 				".......................",
 				".......................");
 		gameMap = new GameMap(groundFactory, map);
@@ -93,7 +100,20 @@ public class Application {
         oxygenDispenser.getAllowableActions().add(new PressButtonAction(oxygenDispenser));
         gameMap.addItem(oxygenDispenser, 2, 10);
 		
-		
+        Item exoskeleton = Item.newInventoryItem("Exoskeleton", 'Z');
+        exoskeleton.addSkill(GameSkills.INVULNERABLE);
+        
+        YugoMaxx yugo = new YugoMaxx("Yugo Maxx");
+        yugo.addItemToInventory(exoskeleton);
+        gameMap.addActor(yugo, 10, 3);
+        
+        
+        Item waterPistol = new Item("Water Pistol", '/');
+        gameMap.addItem(waterPistol, 10, 6);
+        
+        
+        
+        
 		// base code
 		
 //		Grunt grunt = new Grunt("Mongo", player);
