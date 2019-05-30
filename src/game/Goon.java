@@ -9,6 +9,8 @@ import java.util.Random;
  */
 public class Goon extends Enemy{
 	private Random rand = new Random();
+	private Actor target;
+	
 	
 	/**
 	 * Super constructor of the Goon extended from the Enemy class.
@@ -20,7 +22,8 @@ public class Goon extends Enemy{
 	 */
 	public Goon(String name, Actor player) {
 		super(name, 'G');
-		addBehaviour(new FollowBehaviour(player));
+		target = player;
+		addBehaviour(new FollowBehaviour(target));
 	}
 	
 	/**
@@ -29,10 +32,19 @@ public class Goon extends Enemy{
 	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
-		// 10 % of chance to invoke an insult
-		if (rand.nextInt(10) == 0) {
-			return new InsultAction(this);
-		}
+		Location here = map.locationOf(this);
+        Location there = map.locationOf(target);
+        
+        // perform invoke only when same map as player. 
+        // Eg. You can't insult actor who is in another Planet.
+        if (here.map().equals(there.map())) {
+        	
+        	// 10 % chance to invoke insult action
+        	if (rand.nextInt(10) == 0) {
+    			return new InsultAction();
+    		}
+        }
+		
 		
 		for (ActionFactory factory : actionFactories) {
 			Action action = factory.getAction(this, map);

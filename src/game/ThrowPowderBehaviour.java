@@ -31,6 +31,11 @@ public class ThrowPowderBehaviour extends Action implements ActionFactory{
 			Location here = map.locationOf(actor);
 			Location there = map.locationOf(target);
 						
+			// won't perform this behaviour if they are not in the same map.
+            if (!here.map().equals(there.map())) {
+            	return null;
+            }
+			
 			Range xs, ys;
 			if (distance(here,there) < 5) {
 				xs = new Range(Math.min(here.x(), there.x()), Math.abs(here.x() - there.x()) + 1);

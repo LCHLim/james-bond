@@ -28,6 +28,11 @@ public class MoveAwayBehaviour implements ActionFactory{
 			Location here = map.locationOf(actor);
 			Location there = map.locationOf(target);
 			
+			// won't perform this behaviour if they are not in the same map.
+			if (!here.map().equals(there.map())) {
+            	return null;
+            }
+			
 			// this condition check whether if ninja could "see" player within 5 squares of them
 			Range xs, ys;
 			if (distance(here, there) < 5) {

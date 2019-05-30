@@ -27,6 +27,11 @@ public class FollowBehaviour implements ActionFactory {
         try{
             Location here = map.locationOf(actor);
             Location there = map.locationOf(target);
+            
+            // won't perform this behaviour if they are not in the same map.
+            if (!here.map().equals(there.map())) {
+            	return null;
+            }
 
             int currentDistance = distance(here, there);
             for (Exit exit : here.getExits()) {

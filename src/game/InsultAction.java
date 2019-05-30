@@ -10,20 +10,10 @@ import java.util.Random;
  */
 public class InsultAction extends Action{
 
-	private Actor actor;
-	private Actor subject;
 	private Random rand = new Random();
 	private String[] insults = {"You are dumb", "You are weak"};
 	
-	/**
-	 * Constructor for the InsultAction class, which in an extension of the Action class.
-	 * 
-	 * @param actor actor who performs the insulting
-	 */
-	public InsultAction(Actor actor) {
-		this.actor = actor;
-	}
-	
+
 	/**
 	 * Overridden method from the parent class to execute insulting the player.
 	 */
