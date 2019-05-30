@@ -6,7 +6,7 @@ public class OxygenTank extends Item {
 	private int value = 10;
 	
 	public OxygenTank() {
-		super("Oxygen Tank", 'H');
+		super("Oxygen Tank", '=');
 	}
 
 	public int getValue() {
