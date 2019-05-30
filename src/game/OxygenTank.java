@@ -20,7 +20,7 @@ public class OxygenTank extends Item {
 	}
 	
 	public boolean isEmpty() {
-		return getValue() <= 0;
+		return value <= 0;
 	}
 
 

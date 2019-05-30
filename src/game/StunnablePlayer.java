@@ -55,6 +55,11 @@ public class StunnablePlayer extends Player{
 		return isStunned;
 	}
 	
+	public int getHitPoints() {
+		return hitPoints;
+	}
+	
+	
 	private int getRemainingOxygenCount() {
 		List<Item> items = getInventory();
 		
@@ -90,14 +95,23 @@ public class StunnablePlayer extends Player{
 		display.println("HitPoints: " + hitPoints + "/" + maxHitPoints);
 		display.println("Oxygen: " + getRemainingOxygenCount() + " Units");
 		
-		
 		if (map.equals(moon)) {
 			
-			if (getRemainingOxygenCount() > 0)
+			if (getRemainingOxygenCount() > 0) {
 				consumeOxygen();
-			else
+			}
+			else {
 				display.println("Do not have enough amount of oxygen :(");
 				return new MoveActorAction(earthRocketLocation, "to Earth automatically by the safety system!");
+			}
+		} else {
+			
+			// On earth and Yugo Maxx unconscious body is inside inventory
+			for (Item item : getInventory()) {
+				if (item.toString().equals("Sleeping Yugo Maxx")) {
+					return new EndGameAction();
+				}
+			}
 		}
 		
 		return showMenu(actions, display);
@@ -117,6 +131,8 @@ public class StunnablePlayer extends Player{
 			stunCounter++;
 			return super.showMenu(new Actions(new SkipTurnAction()), display);
 		}
+		
+		actions.add(new EndGameAction());
 		
 		return super.showMenu(actions, display);
 		

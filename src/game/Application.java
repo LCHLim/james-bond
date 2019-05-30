@@ -26,7 +26,7 @@ public class Application {
 	 */
 	public static void main(String[] args) {
 		
-		World world = new World(new Display());
+		World world = new GameWorld(new Display());
 		
 		FancyGroundFactory groundFactory = new FancyGroundFactory(
 				new Floor(),
@@ -82,7 +82,7 @@ public class Application {
 		
 		moon.addItem(rocketToEarth, moonRocketLocation.x(), moonRocketLocation.y());
 		
-		Actor player = new StunnablePlayer("Player", '@', 1, 100, moon, earthRocketLocation);
+		Actor player = new StunnablePlayer("Player", '@', 1, 1000, moon, earthRocketLocation);
 		world.addPlayer(player, gameMap, 2, 2);
 		
 		// testing code
@@ -118,8 +118,8 @@ public class Application {
 		
 //		Grunt grunt = new Grunt("Mongo", player);
 //		gameMap.addActor(grunt, 0, 0);
-//
-//
+////
+////
 //		Goon goon = new Goon("Norbert", player);
 //		gameMap.addActor(goon, 10, 3);
 //
