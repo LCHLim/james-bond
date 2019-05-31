@@ -98,7 +98,7 @@ public class Application {
       	gameMap.addItem(spaceSuit, 3, 9);
       	
       	Item oxygenDispenser = Item.newFurniture("Oxygen Dispenser", 'D');
-      	oxygenDispenser.getAllowableActions().add(new PressButtonAction(oxygenDispenser));
+      	oxygenDispenser.getAllowableActions().add(new PressButtonAction());
       	gameMap.addItem(oxygenDispenser, 20, 8);
 		
       	// ---------------- Ground ------------------

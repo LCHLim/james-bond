@@ -9,11 +9,7 @@ import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
 public class PressButtonAction extends Action {
-	private Item target;
 	
-	public PressButtonAction(Item target) {
-		this.target = target;
-	}
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
@@ -27,13 +23,14 @@ public class PressButtonAction extends Action {
 			}
 			
 			here.addItem(new OxygenTank());
-			return actor + " presses the button of " + target;
+			return actor + " presses the button of Oxygen Dispencer";
 	}
 
 
 	@Override
+	
 	public String menuDescription(Actor actor) {
-		return actor + " presses the button of " + target;
+		return actor + " presses the button of Oxygen Dispencer";
 	}
 
 	@Override
