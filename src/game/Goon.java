@@ -37,13 +37,16 @@ public class Goon extends Enemy{
         
         // perform invoke only when same map as player. 
         // Eg. You can't insult actor who is in another Planet.
-        if (here.map().equals(there.map())) {
-        	
-        	// 10 % chance to invoke insult action
-        	if (rand.nextInt(10) == 0) {
-    			return new InsultAction();
-    		}
+        try{
+	        if (here.map().equals(there.map())) {
+	        	
+	        	// 10 % chance to invoke insult action
+	        	if (rand.nextInt(10) == 0) {
+	    			return new InsultAction();
+	    		}
+	        }
         }
+        catch (Exception ex) {}
 		
 		
 		for (ActionFactory factory : actionFactories) {
