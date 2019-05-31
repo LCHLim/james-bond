@@ -2,13 +2,23 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ * Class representing final boss Yugo Maxx
+ */
 public class YugoMaxx extends Enemy {
 
+	/**
+	 * Constructor of YugoMaxx
+	 * @param name name of the instance
+	 */
 	public YugoMaxx(String name) {
 		super(name, 'Y');
 		addBehaviour(new WanderBehaviour());
 	}
 	
+	/**
+	 * Overridden method to select action to perform in each turn.
+	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
 	
@@ -27,12 +37,20 @@ public class YugoMaxx extends Enemy {
 		return new SkipTurnAction();
 	}
 	
+	
+	/**
+	 * Overridden method to define Yugo Maxx damage
+	 */
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		int baseDamage = super.getIntrinsicWeapon().damage();
 		return new IntrinsicWeapon(baseDamage * 2, "punches");
 	}
 	
+	
+	/**
+	 * Overridden method to give allowable actions to particular actors
+	 */
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Item waterPistol = null;

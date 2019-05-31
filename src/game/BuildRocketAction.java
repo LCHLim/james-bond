@@ -66,8 +66,7 @@ public class BuildRocketAction extends Action{
 	}
 
 	/**
-	 * Overridden method from the parent class to get a string returned when
-	 * the player builds the rocket.
+	 * Overridden method to show the action's description on the menu
 	 */
 	@Override
 	public String menuDescription(Actor actor) {
@@ -76,7 +75,7 @@ public class BuildRocketAction extends Action{
 
 	/**
 	 * Overridden method from the parent class to return the key used in the menu
-	 * for triggering the action of building a rocket.
+	 * for triggering the action of build a rocket.
 	 */
 	@Override
 	public String hotKey() {

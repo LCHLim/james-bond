@@ -17,8 +17,8 @@ public class Ninja extends Enemy{
 	 * The method also adds an instance of MoveAwayBehaviour and an instance
 	 * of ThrowPowderBehaviour to Ninja.
 	 * 
-	 * @param name
-	 * @param player
+	 * @param name name of Ninja
+	 * @param player target for ninja
 	 */
 	public Ninja(String name, Actor player) {
 		super(name, 'n');

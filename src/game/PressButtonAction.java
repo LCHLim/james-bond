@@ -8,9 +8,14 @@ import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Action for pressing the oxygen dispenser's button
+ */
 public class PressButtonAction extends Action {
 	
-
+	/**
+	 * Overridden method to press the button
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 			Location here = map.locationOf(actor);
@@ -26,13 +31,18 @@ public class PressButtonAction extends Action {
 			return actor + " presses the button of Oxygen Dispencer";
 	}
 
-
+	/**
+	 * Overridden method to show the action's description on the menu
+	 */
 	@Override
-	
 	public String menuDescription(Actor actor) {
 		return actor + " presses the button of Oxygen Dispencer";
 	}
 
+	/**
+	 * Overridden method from the parent class to return the key used in the menu
+	 * for triggering the action of press button
+	 */
 	@Override
 	public String hotKey() {
 		return "";

@@ -4,14 +4,14 @@ import edu.monash.fit2099.engine.IntrinsicWeapon;
 import edu.monash.fit2099.engine.Item;
 
 /**
- * Class presenting the enemy Miniboss.
+ * Class presenting the enemy DoctorMaybe.
  */
 public class DoctorMaybe extends Enemy{
 	
 	/**
-	 * Super constructor of the Miniboss class extended from the Enemy class.
+	 * Super constructor of the DoctorMaybe class extended from the Enemy class.
 	 * 
-	 * @param name name of the Miniboss
+	 * @param name name of the DoctorMaybe
 	 */
 	public DoctorMaybe(String name) {
 		super(name, 'm', Enemy.BASE_HITPOINTS / 2);

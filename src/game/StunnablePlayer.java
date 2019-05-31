@@ -22,6 +22,8 @@ public class StunnablePlayer extends Player{
 	private GameMap moon;
 	private Location earthRocketLocation;
 	
+	
+	
 	/**
 	 * Super constructor for StunnablePlayer class extended from the Player class.
 	 * 
@@ -29,6 +31,8 @@ public class StunnablePlayer extends Player{
 	 * @param displayChar character to represent the player in the UI
 	 * @param priority how early in the turn the player can act
 	 * @param hitPoints player's starting number of hitpoints
+	 * @param moon moon map reference
+	 * @param earthRocketLocation location reference
 	 */
 	public StunnablePlayer(String name, char displayChar, int priority, int hitPoints, GameMap moon, Location earthRocketLocation) {
 		super(name, displayChar, priority, hitPoints);
@@ -55,11 +59,18 @@ public class StunnablePlayer extends Player{
 		return isStunned;
 	}
 	
+	/**
+	 * Getter of attribute hitPoints
+	 * @return player current hitPoints
+	 */
 	public int getHitPoints() {
 		return hitPoints;
 	}
 	
-	
+	/**
+	 * Counts the remaining oxygen
+	 * @return remaining amount of oxygen
+	 */
 	private int getRemainingOxygenCount() {
 		List<Item> items = getInventory();
 		
@@ -69,10 +80,12 @@ public class StunnablePlayer extends Player{
 				amount += ((OxygenTank) item).getValue();
 			}
 		}
-		
 		return amount;
 	}
 	
+	/**
+	 * Consume oxygen by 1 point
+	 */
 	private void consumeOxygen() {
 		List<Item> items = getInventory();
 		
@@ -90,6 +103,11 @@ public class StunnablePlayer extends Player{
 		
 	}
 	
+	/**
+	 * Overridden method to select action to perform in each turn.
+	 * Used this method to apply some side effect on player
+	 * and perform suitable actions in current environment.
+	 */
 	@Override
 	public Action playTurn(Actions actions, GameMap map, Display display) {
 		display.println("HitPoints: " + hitPoints + "/" + maxHitPoints);
@@ -119,6 +137,7 @@ public class StunnablePlayer extends Player{
 	
 	/**
 	 * Overridden method from the parent class to make the player stunnable.
+	 * Additionally, allow player to quit the game by himself/herself.
 	 */
 	@Override
 	protected Action showMenu(Actions actions, Display display) {
